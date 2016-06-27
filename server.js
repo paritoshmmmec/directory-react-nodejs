@@ -11,8 +11,7 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-app.get('/employees', employees.findAll);
-app.get('/employees/:id', employees.findById);
+app.use('/employees',employees);
 
 app.set('port', process.env.PORT || 5000);
 
