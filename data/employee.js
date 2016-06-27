@@ -1,7 +1,3 @@
-var express= require('express')
-var employeeRouter= express.Router();
-
-
 var employees = [
     {"id": 0, "firstName": "James", "lastName": "King", "reports": 4, "title": "President and CEO", "department": "Corporate", "mobilePhone": "617-000-0001", "officePhone": "781-000-0001", "email": "jking@fakemail.com", "city": "Boston, MA", "pic": "James_King.jpg", "twitterId": "@fakejking", "blog": "http://coenraets.org"},
     {"id": 1, "firstName": "Julie", "lastName": "Taylor", "managerId": 0, "managerName": "James King", "reports": 2, "title": "VP of Marketing", "department": "Marketing", "mobilePhone": "617-000-0002", "officePhone": "781-000-0002", "email": "jtaylor@fakemail.com", "city": "Boston, MA", "pic": "Julie_Taylor.jpg", "twitterId": "@fakejtaylor", "blog": "http://coenraets.org"},
@@ -17,23 +13,4 @@ var employees = [
     {"id": 11, "firstName": "Steven", "lastName": "Wells", "managerId": 3, "managerName": "John Williams", "reports": 0, "title": "Software Architect", "department": "Engineering", "mobilePhone": "617-000-0012", "officePhone": "781-000-0012", "email": "swells@fakemail.com", "city": "Boston, MA", "pic": "Steven_Wells.jpg", "twitterId": "@fakeswells", "blog": "http://coenraets.org"}
 ];
 
-var findAll = function (req, res, next) {
-    var name = req.query.name;
-    if (name) {
-        res.send(employees.filter(function(employee) {
-            return (employee.firstName + ' ' + employee.lastName).toLowerCase().indexOf(name.toLowerCase()) > -1;
-        }));
-    } else {
-        res.send(employees);
-    }
-};
-
-var findById = function (req, res, next) {
-    var id = req.params.id;
-    res.send(employees[id]);
-};
-
-employeeRouter.get('/', findAll);
-employeeRouter.get('/:id', findById);
-
-module.exports= employeeRouter;
+module.exports= employees;
